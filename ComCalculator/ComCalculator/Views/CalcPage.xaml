@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:customcontrols="clr-namespace:ComCalculator.CustomControls"
+             x:Class="ComCalculator.Views.CalcPage">
+    <StackLayout>
+        <ScrollView
+            Padding="20">
+            <StackLayout>
+                <customcontrols:CalcUnit
+                    IsVisible="{Binding }"
+            CornerRadius="3"
+            Title="Gas"
+            CurrentValue="1245"
+            PreviousValue="12314"
+            CoefValue="1,5"
+            ResultValue="1467"/>
+                <customcontrols:CalcUnit
+            CornerRadius="3"
+            Title="Water"
+            CurrentValue="1245"
+            PreviousValue="12314"
+            CoefValue="1,5"
+            ResultValue="1467"/>
+                <customcontrols:CalcUnit
+            CornerRadius="3"
+            Title="HotWater"
+            CurrentValue="1245"
+            PreviousValue="12314"
+            CoefValue="1,5"
+            ResultValue="1467"/>
+                <customcontrols:CalcUnit
+            CornerRadius="3"
+            Title="Heating"
+            CurrentValue="1245"
+            PreviousValue="12314"
+            CoefValue="1,5"
+            ResultValue="1467"/>
+                <customcontrols:CalcUnit
+            CornerRadius="3"
+            Title="Public Service"
+            CurrentValue="1245"
+            PreviousValue="12314"
+            CoefValue="1,5"
+            ResultValue="1467"/>
+            </StackLayout>
+        </ScrollView>
+        <Button
+            Text="Calculate"
+            Margin="20,0,20,20"/>
+    </StackLayout>
+    
+</ContentPage>

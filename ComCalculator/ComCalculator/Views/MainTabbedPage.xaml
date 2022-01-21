@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ComCalculator.Views"
+    xmlns:viewmodels="clr-namespace:ComCalculator.ViewModels" 
+    x:DataType="viewmodels:MainTabbedPageViewModel"
+    x:Class="ComCalculator.Views.MainTabbedPage">
+    <Shell.Resources>
+        <Style
+            TargetType="TabBar">
+            <Setter
+                Property="Shell.TabBarBackgroundColor"
+                Value="LightBlue" />
+            <Setter
+                Property="Shell.TabBarDisabledColor"
+                Value="Gray" />
+            <Setter
+                Property="Shell.TabBarForegroundColor"
+                Value="Green" />
+            <Setter
+                Property="Shell.TabBarTitleColor"
+                Value="Black" />
+            <Setter
+                Property="Shell.TabBarUnselectedColor"
+                Value="Gray" />
+        </Style>
+    </Shell.Resources>
+    <TabBar>
+        <ShellContent
+            ContentTemplate="{x:DataTemplate views:SettingsPage}"
+            BindingContext="{Binding PageOfSettings}"
+            Title="Settings"
+            Icon="settings">
+        </ShellContent>
+        <ShellContent
+            ContentTemplate="{x:DataTemplate views:CalcPage}"
+            BindingContext="{Binding CalculatePage}"
+            Title="Calculate"
+            Icon="settings">
+        </ShellContent>
+        <ShellContent
+            ContentTemplate="{x:DataTemplate views:StatisticPage}"
+            BindingContext="{Binding PageOfStatistic}"
+            Title="Statistic"
+            Icon="settings">
+        </ShellContent>
+    </TabBar>
+</Shell>
