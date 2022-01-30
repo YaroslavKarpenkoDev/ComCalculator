@@ -1,4 +1,5 @@
 ﻿using ComCalculator.Core;
+using ComCalculator.Utils;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,10 @@ namespace ComCalculator.ViewModels
 	public class CalcPageViewModel : ViewModelBase
 	{
 		public CalcPageViewModel(INavigationService navigationService) : base(navigationService)
+		{
+			LoadSettings();
+		}
+		public CalcPageViewModel()
 		{
 
 		}
@@ -25,7 +30,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				isGasUnitEnable = value;
-				RaisePropertyChanged(nameof(IsGasUnitEnable));
 			}
 		}
 
@@ -39,7 +43,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				isWaterUnitEnable = value;
-				RaisePropertyChanged(nameof(IsWaterUnitEnable));
 			}
 		}
 
@@ -53,7 +56,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				isHotWaterUnitEnable = value;
-				RaisePropertyChanged(nameof(IsHotWaterUnitEnable));
 			}
 		}
 
@@ -67,12 +69,11 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				isHeatingUnitEnable = value;
-				RaisePropertyChanged(nameof(IsHeatingUnitEnable));
 			}
 		}
 
 		private bool publicServiceUnitEnable;
-		public bool IspublicServiceUnitEnable
+		public bool IsPublicServiceUnitEnable
 		{
 			get
 			{
@@ -81,7 +82,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				publicServiceUnitEnable = value;
-				RaisePropertyChanged(nameof(IspublicServiceUnitEnable));
 			}
 		}
 		#endregion UnitsVisibles
@@ -97,7 +97,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				gasCounterOldValue = value;
-				RaisePropertyChanged(nameof(GasCounterOldValue));
 			}
 		}
 
@@ -111,7 +110,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				gasCounterNewValue = value;
-				RaisePropertyChanged(nameof(GasCounterNewValue));
 			}
 		}
 
@@ -125,7 +123,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				waterCounterOldValue = value;
-				RaisePropertyChanged(nameof(WaterCounterOldValue));
 			}
 		}
 
@@ -139,7 +136,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				waterCounterNewValue = value;
-				RaisePropertyChanged(nameof(WaterCounterNewValue));
 			}
 		}
 
@@ -153,7 +149,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				hotWaterCounterOldValue = value;
-				RaisePropertyChanged(nameof(HotWaterCounterOldValue));
 			}
 		}
 
@@ -167,35 +162,32 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				hotWaterCounterNewValue = value;
-				RaisePropertyChanged(nameof(HotWaterCounterNewValue));
 			}
 		}
 
-		private string heatingCounterOldValue;
-		public string HeatingCounterOldValue
+		private string eletricityCounterOldValue;
+		public string EletricityCounterOldValue
 		{
 			get
 			{
-				return heatingCounterOldValue;
+				return eletricityCounterOldValue;
 			}
 			set
 			{
-				heatingCounterOldValue = value;
-				RaisePropertyChanged(nameof(HeatingCounterOldValue));
+				eletricityCounterOldValue = value;
 			}
 		}
 
-		private string heatingCounterNewValue;
-		public string HeatingCounterNewValue
+		private string eletricityCounterNewValue;
+		public string EletricityCounterNewValue
 		{
 			get
 			{
-				return heatingCounterNewValue;
+				return eletricityCounterNewValue;
 			}
 			set
 			{
-				heatingCounterNewValue = value;
-				RaisePropertyChanged(nameof(HeatingCounterNewValue));
+				eletricityCounterNewValue = value;
 			}
 		}
 
@@ -209,7 +201,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				publicServiceCounterOldValue = value;
-				RaisePropertyChanged(nameof(PublicServiceCounterOldValue));
 			}
 		}
 
@@ -223,7 +214,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				publicServiceCounterNewValue = value;
-				RaisePropertyChanged(nameof(PublicServiceCounterNewValue));
 			}
 		}
 		#endregion CountersValues
@@ -239,7 +229,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				gasCoef = value;
-				RaisePropertyChanged(nameof(GasCoef));
 			}
 		}
 
@@ -253,7 +242,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				waterCoef = value;
-				RaisePropertyChanged(nameof(WaterCoef));
 			}
 		}
 
@@ -267,7 +255,19 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				hotWaterCoef = value;
-				RaisePropertyChanged(nameof(HotWaterCoef));
+			}
+		}
+
+		private string electricityCoef;
+		public string ElectricityCoef
+		{
+			get
+			{
+				return electricityCoef;
+			}
+			set
+			{
+				electricityCoef = value;
 			}
 		}
 
@@ -281,7 +281,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				heatingCost = value;
-				RaisePropertyChanged(nameof(HeatingCost));
 			}
 		}
 
@@ -295,7 +294,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				publicServiceCost = value;
-				RaisePropertyChanged(nameof(PublicServiceCost));
 			}
 		}
 		#endregion Coefitients&Prises
@@ -311,7 +309,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				gasResult = value;
-				RaisePropertyChanged(nameof(GasResult));
 			}
 		}
 		private string waterResult;
@@ -324,7 +321,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				waterResult = value;
-				RaisePropertyChanged(nameof(WaterResult));
 			}
 		}
 
@@ -338,19 +334,60 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				hotWaterResult = value;
-				RaisePropertyChanged(nameof(HotWaterResult));
+			}
+		}
+
+		private string electricityResult;
+		public string ElectricityResult
+		{
+			get
+			{
+				return electricityResult;
+			}
+			set
+			{
+				electricityResult = value;
 			}
 		}
 		#endregion
 
-		#endregion
 
+		#endregion
+		#region Lifecycle
+		public override void OnNavigatedTo(INavigationParameters parameters)
+		{
+			base.OnNavigatedTo(parameters);
+		}
+
+		public override void Initialization()
+		{
+			base.Initialization();
+			LoadSettings();
+		}
+		#endregion
 		#region Methods
 		public void StartEtimation()
 		{
-			GasResult = calculationService.ToCalculate(calculationService.ConvertToDouble(GasCounterNewValue),calculationService.ConvertToDouble(GasCounterOldValue),calculationService.ConvertToDouble(GasCoef)).ToString();
-			WaterResult = calculationService.ToCalculate(calculationService.ConvertToDouble(WaterCounterNewValue), calculationService.ConvertToDouble(WaterCounterOldValue), calculationService.ConvertToDouble(WaterCoef)).ToString();
-			HotWaterResult = calculationService.ToCalculate(calculationService.ConvertToDouble(HotWaterCounterNewValue), calculationService.ConvertToDouble(HotWaterCounterOldValue), calculationService.ConvertToDouble(HotWaterCoef)).ToString();
+			GasResult = CalculationService.ToCalculate(CalculationService.ConvertToDouble(GasCounterNewValue),CalculationService.ConvertToDouble(GasCounterOldValue),CalculationService.ConvertToDouble(GasCoef)).ToString();
+			WaterResult = CalculationService.ToCalculate(CalculationService.ConvertToDouble(WaterCounterNewValue), CalculationService.ConvertToDouble(WaterCounterOldValue), CalculationService.ConvertToDouble(WaterCoef)).ToString();
+			HotWaterResult = CalculationService.ToCalculate(CalculationService.ConvertToDouble(HotWaterCounterNewValue), CalculationService.ConvertToDouble(HotWaterCounterOldValue), CalculationService.ConvertToDouble(HotWaterCoef)).ToString();
+			AppSettings.GasPastValue = GasCounterNewValue;
+			 AppSettings.HotWaterPastValue = HotWaterCounterNewValue;
+			AppSettings.WaterPastValue = WaterCounterNewValue;
+			 AppSettings.ElectricityPastValue = EletricityCounterNewValue;
+		}
+
+		private void LoadSettings()
+		{
+			IsGasUnitEnable = AppSettings.GasCounterPresence;
+			IsWaterUnitEnable = AppSettings.WaterCounterPresence;
+			IsHotWaterUnitEnable = AppSettings.HotWaterCounterPresence;
+			IsHeatingUnitEnable = AppSettings.HeatingCounterPresence;
+			IsPublicServiceUnitEnable = AppSettings.PublicServiceCounterPresence;
+			GasCounterOldValue = AppSettings.GasPastValue;
+			HotWaterCounterOldValue = AppSettings.HotWaterPastValue;
+			WaterCounterOldValue = AppSettings.WaterPastValue;
+			EletricityCounterOldValue = AppSettings.ElectricityPastValue;
 		}
 		#endregion
 	}

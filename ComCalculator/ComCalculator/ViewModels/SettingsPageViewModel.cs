@@ -1,4 +1,7 @@
-﻿using ComCalculator.Utils;
+﻿using ComCalculator.Core;
+using ComCalculator.Models;
+using ComCalculator.Utils;
+using ComCalculator.Views;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -13,8 +16,10 @@ namespace ComCalculator.ViewModels
 		public SettingsPageViewModel(INavigationService navigationService) : base(navigationService)
 		{
 			LoadSettings();
+			userSettings = new UserSettingsModel();
 		}
 		#region Properies&Field
+		public UserSettingsModel userSettings;
 		private string _gasCoef;
 		public string GasCoef
 		{
@@ -25,7 +30,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_gasCoef = value;
-				RaisePropertyChanged(nameof(GasCoef));
 			}
 		}
 
@@ -39,7 +43,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_isGasCoefEnabled = value;
-				RaisePropertyChanged(nameof(IsGasCounterEnable));
 			}
 		}
 
@@ -53,7 +56,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_electricityCoef = value;
-				RaisePropertyChanged(nameof(ElectricityCoef));
 			}
 		}
 
@@ -67,7 +69,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_waterCoef = value;
-				RaisePropertyChanged(nameof(WaterCoef));
 			}
 		}
 
@@ -81,7 +82,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_isWaterCounterEnable = value;
-				RaisePropertyChanged(nameof(IsWaterCounterEnable));
 			}
 		}
 
@@ -95,7 +95,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_hotWaterCoef = value;
-				RaisePropertyChanged(nameof(HotWaterCoef));
 			}
 		}
 
@@ -109,7 +108,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_isHotWaterEnable = value;
-				RaisePropertyChanged(nameof(IsHotWaterCounterEnable));
 			}
 		}
 
@@ -123,7 +121,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_heatingCoast = value;
-				RaisePropertyChanged(nameof(HeatingCost));
 			}
 		}
 
@@ -137,7 +134,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_isHeatingEnable = value;
-				RaisePropertyChanged(nameof(IsHeatingEnable));
 			}
 		}
 
@@ -151,7 +147,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_publicServiceCost = value;
-				RaisePropertyChanged(nameof(PublicServiceCost));
 			}
 		}
 
@@ -165,7 +160,6 @@ namespace ComCalculator.ViewModels
 			set
 			{
 				_isPublicServiceEnable = value;
-				RaisePropertyChanged(nameof(IsPublicServiceEnable));
 			}
 		}
 		#endregion
@@ -185,22 +179,31 @@ namespace ComCalculator.ViewModels
 		#endregion
 
 		#region Methods
-		public void SaveSettings()
+		public async void SaveSettings()
 		{
-			AppSettings.GasCoefitient = calculationService.ConvertToInt(GasCoef);
-			AppSettings.GasCounterPresence = IsGasCounterEnable;
+			try
+			{
+				AppSettings.GasCoefitient = CalculationService.ConvertToInt(GasCoef);
+				AppSettings.GasCounterPresence = IsGasCounterEnable;
 
-			AppSettings.WaterCoefitient = calculationService.ConvertToInt(WaterCoef);
-			AppSettings.WaterCounterPresence = IsWaterCounterEnable;
+				AppSettings.WaterCoefitient = CalculationService.ConvertToInt(WaterCoef);
+				AppSettings.WaterCounterPresence = IsWaterCounterEnable;
 
-			AppSettings.HotWaterCoefitient = calculationService.ConvertToInt(HotWaterCoef);
-			AppSettings.HotWaterCounterPresence = IsHotWaterCounterEnable;
+				AppSettings.HotWaterCoefitient = CalculationService.ConvertToInt(HotWaterCoef);
+				AppSettings.HotWaterCounterPresence = IsHotWaterCounterEnable;
 
-			AppSettings.HeatingCoefitient = calculationService.ConvertToInt(HeatingCost);
-			AppSettings.HeatingCounterPresence = IsHeatingEnable;
+				AppSettings.HeatingCoefitient = CalculationService.ConvertToInt(HeatingCost);
+				AppSettings.HeatingCounterPresence = IsHeatingEnable;
 
-			AppSettings.PublicServiceCoefitient = calculationService.ConvertToInt(PublicServiceCost);
-			AppSettings.PublicServiceCounterPresence = IsPublicServiceEnable;
+				AppSettings.PublicServiceCoefitient = CalculationService.ConvertToInt(PublicServiceCost);
+				AppSettings.PublicServiceCounterPresence = IsPublicServiceEnable;
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
+
+			CalcPage calcPage = new CalcPage();
 		}
 		public void LoadSettings()
 		{

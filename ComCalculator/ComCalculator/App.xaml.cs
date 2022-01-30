@@ -1,3 +1,4 @@
+using ComCalculator.Core;
 using ComCalculator.ViewModels;
 using ComCalculator.Views;
 using Prism;
@@ -13,12 +14,14 @@ namespace ComCalculator
 		public App(IPlatformInitializer initializer)
 			: base(initializer)
 		{
-		}
-
+		}		
 		protected override async void OnInitialized()
 		{
 			InitializeComponent();
-			await NavigationService.NavigateAsync("MainTabbedPage");
+			Sharpnado.Tabs.Initializer.Initialize(false, false);
+			Sharpnado.Shades.Initializer.Initialize(loggerEnable: false);
+			Sharpnado.MaterialFrame.Initializer.Initialize(loggerEnable: false, debugLogEnable: false);
+			await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MainTabbedPage)}");
 		}
 
 		protected override void RegisterTypes(IContainerRegistry containerRegistry)

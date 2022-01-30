@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ComCalculator.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
 
 namespace ComCalculator.Utils
 {
-	public static class AppSettings
+	public static partial class AppSettings
 	{
         //gas
         private const string GasCoefKey = "gasCoef";
@@ -109,6 +110,5 @@ namespace ComCalculator.Utils
             get => Preferences.Get(PublicServiceCounterPresenceKey, PublicServiceCounterPresenceDefault);
             set => Preferences.Set(PublicServiceCounterPresenceKey, value);
         }
-
     }
 }

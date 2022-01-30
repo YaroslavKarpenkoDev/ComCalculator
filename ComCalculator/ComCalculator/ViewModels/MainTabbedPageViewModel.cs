@@ -12,9 +12,22 @@ namespace ComCalculator.ViewModels
 			
 		}
 		#region Properties&Fields
+		private int selectedIndex = 0;
 		private SettingsPageViewModel settingsPage;
 		private StatisticPageViewModel statisticPage;
 		private CalcPageViewModel calcPage;
+		public int SelectedIndex
+		{
+			get => selectedIndex;
+			set
+			{
+				if (value == 1)
+				{
+					CalculatePage.Initialization();
+				}
+				selectedIndex = value;
+			}
+		}
 		public CalcPageViewModel CalculatePage
 		{
 			get

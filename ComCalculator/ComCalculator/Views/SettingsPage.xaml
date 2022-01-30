@@ -65,8 +65,7 @@
                     Text="Водный счетчик"/>
                     </Grid>
                     <StackLayout
-                IsVisible="{Binding IsWaterCounterEnable}"
-                CornerRadius="3">
+                IsVisible="{Binding IsWaterCounterEnable}">
                         <Grid
                 ColumnDefinitions="*,*">
                             <Label
@@ -103,7 +102,6 @@
                     Text="Счетчик гарячей воды"/>
                     </Grid>
                     <StackLayout
-                CornerRadius="3"
                 IsVisible="{Binding IsHotWaterCounterEnable}">
                         <Grid
                 ColumnDefinitions="*,*">
@@ -141,7 +139,6 @@
                     Text="Отопление"/>
                     </Grid>
                     <StackLayout
-                        CornerRadius="3"
                         IsVisible="{Binding IsHeatingEnable}">
                         <Grid
                 ColumnDefinitions="*,*">
@@ -179,7 +176,6 @@
                     Text="Коммунальные услуги"/>
                     </Grid>
                     <StackLayout
-                        CornerRadius="3"
                         IsVisible="{Binding IsPublicServiceEnable}">
                         <Grid
                 ColumnDefinitions="*,*">

@@ -1,49 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Shell
+<ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:ComCalculator.Views"
-    xmlns:viewmodels="clr-namespace:ComCalculator.ViewModels" 
-    x:DataType="viewmodels:MainTabbedPageViewModel"
+    xmlns:tabs="http://sharpnado.com"
+    xmlns:materialframe="http://sharpnado.com"
     x:Class="ComCalculator.Views.MainTabbedPage">
-    <Shell.Resources>
-        <Style
-            TargetType="TabBar">
-            <Setter
-                Property="Shell.TabBarBackgroundColor"
-                Value="LightBlue" />
-            <Setter
-                Property="Shell.TabBarDisabledColor"
-                Value="Gray" />
-            <Setter
-                Property="Shell.TabBarForegroundColor"
-                Value="Green" />
-            <Setter
-                Property="Shell.TabBarTitleColor"
-                Value="Black" />
-            <Setter
-                Property="Shell.TabBarUnselectedColor"
-                Value="Gray" />
+
+    <Grid
+        ColumnSpacing="0"
+        RowSpacing="0"
+        BackgroundColor="#F0F0F3">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="100" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="95" />
+        </Grid.RowDefinitions>
+
+        <tabs:ViewSwitcher
+            x:Name="Switcher"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            BackgroundColor="Transparent"
+            VerticalOptions="FillAndExpand"
+            Animate="True"
+            SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+            <tabs:LazyView
+                x:TypeArguments="views:SettingsPage"                    
+                BindingContext="{Binding PageOfSettings}"/>
+            <tabs:LazyView
+                x:TypeArguments="views:CalcPage"
+                BindingContext="{Binding CalculatePage}"/>
+            <tabs:LazyView
+                x:TypeArguments="views:StatisticPage"
+                BindingContext="{Binding PageOfStatistic}"/>
+        </tabs:ViewSwitcher>
+
+        <tabs:TabHostView
+            Grid.Row="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            HeightRequest="60"
+            WidthRequest="280"
+            TabType="Fixed"
+            IsSegmented="True"
+            CornerRadius="30"
+            Margin="15"
+            BackgroundColor="#F0F0F3"
+            SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
+            <tabs:TabHostView.Tabs>
+                <tabs:BottomTabItem
+                    IconSize="30"
+                    HeightRequest="60"
+                    UnselectedLabelColor="Blue"
+                    SelectedTabColor="Blue"
+                    IconImageSource="settings"
+                    Label="Settings" />
+                <tabs:BottomTabItem
+                    IconSize="30"
+                    HeightRequest="60"
+                    UnselectedLabelColor="Blue"
+                    SelectedTabColor="Blue"
+                    IconImageSource="settings"
+                    Label="Calculate" />
+                <tabs:BottomTabItem
+                    IconSize="30"
+                    HeightRequest="60"
+                    UnselectedLabelColor="Blue"
+                    SelectedTabColor="Blue"
+                    IconImageSource="settings"
+                    Label="Statistic" />
+            </tabs:TabHostView.Tabs>
+        </tabs:TabHostView>
+
+    </Grid>
+
+    <!--<Shell.Resources>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="LightBlue" />
+            <Setter Property="Shell.TabBarDisabledColor"
+                    Value="Gray" />
+            <Setter Property="Shell.TabBarForegroundColor"
+                    Value="Green" />
+            <Setter Property="Shell.TabBarTitleColor"
+                    Value="Black" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+                    Value="Gray" />
         </Style>
     </Shell.Resources>
     <TabBar>
-        <ShellContent
-            ContentTemplate="{x:DataTemplate views:SettingsPage}"
-            BindingContext="{Binding PageOfSettings}"
-            Title="Settings"
-            Icon="settings">
+        <ShellContent ContentTemplate="{x:DataTemplate views:SettingsPage}"
+                      BindingContext="{Binding PageOfSettings}"
+                      Title="Settings"
+                      Icon="settings"
+                      BindingContextChanged="ShellContent_BindingContextChanged">
         </ShellContent>
-        <ShellContent
-            ContentTemplate="{x:DataTemplate views:CalcPage}"
-            BindingContext="{Binding CalculatePage}"
-            Title="Calculate"
-            Icon="settings">
+        <ShellContent ContentTemplate="{x:DataTemplate views:CalcPage}"
+                      BindingContext="{Binding CalculatePage}"
+                      Title="Calculate"
+                      Icon="settings"
+            BindingContextChanged="ShellContent_BindingContextChanged">
         </ShellContent>
-        <ShellContent
-            ContentTemplate="{x:DataTemplate views:StatisticPage}"
-            BindingContext="{Binding PageOfStatistic}"
-            Title="Statistic"
-            Icon="settings">
+        <ShellContent ContentTemplate="{x:DataTemplate views:StatisticPage}"
+                      BindingContext="{Binding PageOfStatistic}"
+                      Title="Statistic"
+                      Icon="settings">
         </ShellContent>
-    </TabBar>
-</Shell>
+    </TabBar>-->
+
+</ContentPage>

@@ -11,10 +11,16 @@ namespace ComCalculator.ViewModels
 	public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
 	{
 		protected INavigationService NavigationService { get; private set; }
-		protected ICalculationService calculationService;
+
+		protected ICalculationService CalculationService;
 		public ViewModelBase(INavigationService navigationService)
 		{
 			NavigationService = navigationService;
+			CalculationService = new CalculationService();
+		}
+		public ViewModelBase()
+		{
+
 		}
 
 		public virtual void Initialize(INavigationParameters parameters)
@@ -35,6 +41,11 @@ namespace ComCalculator.ViewModels
 		public virtual void Destroy()
 		{
 
-		}			
+		}	
+		
+		public virtual void Initialization()
+		{
+
+		}
 	}
 }

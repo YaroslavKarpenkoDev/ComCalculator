@@ -1,53 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:customcontrols="clr-namespace:ComCalculator.CustomControls"
-             x:Class="ComCalculator.Views.CalcPage">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customcontrols="clr-namespace:ComCalculator.CustomControls"
+    xmlns:viewmodels="clr-namespace:ComCalculator.ViewModels"
+    x:DataType="viewmodels:CalcPageViewModel"
+    x:Class="ComCalculator.Views.CalcPage">
     <StackLayout>
         <ScrollView
             Padding="20">
             <StackLayout>
                 <customcontrols:CalcUnit
-                    IsVisible="{Binding }"
-            CornerRadius="3"
-            Title="Gas"
-            CurrentValue="1245"
-            PreviousValue="12314"
-            CoefValue="1,5"
-            ResultValue="1467"/>
+                    IsVisible="true"
+                    CornerRadius="3"
+                    Title="Electricity"
+                    CurrentValue="111"
+                    PreviousValue="110"
+                    CoefValue="111"
+                    ResultValue="1" />
                 <customcontrols:CalcUnit
-            CornerRadius="3"
-            Title="Water"
-            CurrentValue="1245"
-            PreviousValue="12314"
-            CoefValue="1,5"
-            ResultValue="1467"/>
+                    IsVisible="{Binding IsGasUnitEnable}"
+                    CornerRadius="3"
+                    Title="Gas"
+                    CurrentValue="{Binding GasCounterNewValue}"
+                    CoefValue="{Binding GasCoef}"
+                    ResultValue="{Binding GasResult}" />
                 <customcontrols:CalcUnit
-            CornerRadius="3"
-            Title="HotWater"
-            CurrentValue="1245"
-            PreviousValue="12314"
-            CoefValue="1,5"
-            ResultValue="1467"/>
+                    IsVisible="{Binding IsWaterUnitEnable}"
+                    CornerRadius="3"
+                    Title="Water"
+                    CurrentValue="{Binding WaterCounterNewValue}"
+                    CoefValue="{Binding WaterCoef}"
+                    ResultValue="{Binding WaterResult}" />
                 <customcontrols:CalcUnit
-            CornerRadius="3"
-            Title="Heating"
-            CurrentValue="1245"
-            PreviousValue="12314"
-            CoefValue="1,5"
-            ResultValue="1467"/>
+                    IsVisible="{Binding IsHotWaterUnitEnable}"
+                    CornerRadius="3"
+                    Title="HotWater"
+                    CurrentValue="{Binding HotWaterCounterNewValue}"
+                    CoefValue="{Binding HotWaterCoef}"
+                    ResultValue="{Binding HotWaterResult}" />
                 <customcontrols:CalcUnit
-            CornerRadius="3"
-            Title="Public Service"
-            CurrentValue="1245"
-            PreviousValue="12314"
-            CoefValue="1,5"
-            ResultValue="1467"/>
+                    IsVisible="{Binding IsHeatingUnitEnable}"
+                    CornerRadius="3"
+                    Title="Heating"
+                    CoefValue="{Binding HeatingCost}"
+                    ResultValue="{Binding HeatingCost}" />
+                <customcontrols:CalcUnit
+                    IsVisible="{Binding IsPublicServiceUnitEnable}"
+                    CornerRadius="3"
+                    Title="Public Service"
+                    ResultValue="{Binding PublicServiceCost}" />
             </StackLayout>
         </ScrollView>
         <Button
             Text="Calculate"
-            Margin="20,0,20,20"/>
+            Margin="20,0,20,20" />
     </StackLayout>
-    
+
 </ContentPage>

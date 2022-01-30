@@ -22,6 +22,7 @@ namespace ComCalculator.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Sharpnado.Tabs.iOS.Preserver.Preserve();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

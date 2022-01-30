@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComCalculator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace ComCalculator.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MainTabbedPage : Shell
+	public partial class MainTabbedPage
 	{
 		public MainTabbedPage()
 		{
 			InitializeComponent();
 		}
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+		}
+
 	}
 }
