@@ -6,7 +6,7 @@ namespace ComCalculator.Core
 {
 	public interface ICalculationService
 	{
-		int ToCalculate(params int[] values);
+		double ToCalculate(params string[] values);
 		double ToCalculate(double newValue, double oldValue, double coefitient);
 
 		int ConvertToInt(string value);

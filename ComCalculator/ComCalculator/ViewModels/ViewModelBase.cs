@@ -1,7 +1,11 @@
 ﻿using ComCalculator.Core;
 using Prism.Commands;
+using Prism.Common;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Acr.UserDialogs;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Text;

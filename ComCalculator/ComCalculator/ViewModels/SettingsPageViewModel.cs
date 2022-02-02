@@ -3,6 +3,7 @@ using ComCalculator.Models;
 using ComCalculator.Utils;
 using ComCalculator.Views;
 using Prism.Navigation;
+using Acr.UserDialogs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace ComCalculator.ViewModels
 	{
 		public SettingsPageViewModel(INavigationService navigationService) : base(navigationService)
 		{
-			LoadSettings();
+			
 			userSettings = new UserSettingsModel();
 		}
 		#region Properies&Field
@@ -172,8 +173,7 @@ namespace ComCalculator.ViewModels
 		public override void OnNavigatedTo(INavigationParameters parameters)
 		{
 			base.OnNavigatedTo(parameters);
-
-			
+			LoadSettings();
 		}
 
 		#endregion
@@ -183,30 +183,34 @@ namespace ComCalculator.ViewModels
 		{
 			try
 			{
-				AppSettings.GasCoefitient = CalculationService.ConvertToInt(GasCoef);
+				AppSettings.GasCoefitient = GasCoef;
 				AppSettings.GasCounterPresence = IsGasCounterEnable;
 
-				AppSettings.WaterCoefitient = CalculationService.ConvertToInt(WaterCoef);
+				AppSettings.WaterCoefitient = WaterCoef;
 				AppSettings.WaterCounterPresence = IsWaterCounterEnable;
 
-				AppSettings.HotWaterCoefitient = CalculationService.ConvertToInt(HotWaterCoef);
+				AppSettings.HotWaterCoefitient = HotWaterCoef;
 				AppSettings.HotWaterCounterPresence = IsHotWaterCounterEnable;
 
-				AppSettings.HeatingCoefitient = CalculationService.ConvertToInt(HeatingCost);
+				AppSettings.HeatingCoefitient = HeatingCost;
 				AppSettings.HeatingCounterPresence = IsHeatingEnable;
 
-				AppSettings.PublicServiceCoefitient = CalculationService.ConvertToInt(PublicServiceCost);
+				AppSettings.PublicServiceCoefitient = PublicServiceCost;
 				AppSettings.PublicServiceCounterPresence = IsPublicServiceEnable;
+
+				AppSettings.ElectricityCoefitient = ElectricityCoef;
+				UserDialogs.Instance.Toast("Changes hs been saved!", TimeSpan.FromMilliseconds(500));
 			}
 			catch (Exception ex)
 			{
 				throw;
 			}
 
-			CalcPage calcPage = new CalcPage();
 		}
 		public void LoadSettings()
 		{
+			ElectricityCoef = AppSettings.ElectricityCoefitient.ToString();
+
 			IsGasCounterEnable = AppSettings.GasCounterPresence;
 			GasCoef = AppSettings.GasCoefitient.ToString();
 

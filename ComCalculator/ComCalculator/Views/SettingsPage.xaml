@@ -1,88 +1,117 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:viewmodels="clr-namespace:ComCalculator.ViewModels" 
-             x:DataType="viewmodels:SettingsPageViewModel"
-             x:Class="ComCalculator.Views.SettingsPage"
-             Title="Settings"
-             NavigationPage.HasNavigationBar="False">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:ComCalculator.ViewModels"
+    x:DataType="viewmodels:SettingsPageViewModel"
+    x:Class="ComCalculator.Views.SettingsPage"
+    Title="Settings">
     <StackLayout>
         <ScrollView
             Padding="20">
             <StackLayout
                 Spacing="20">
 
+                <!--electricity-->
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        VerticalOptions="CenterAndExpand"
+                        Grid.Column="1"
+                        FontSize="20"
+                        Text="Електричество" />
+                    <StackLayout>
+                        <Grid
+                            ColumnDefinitions="*,*">
+                            <Label
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="0"
+                                Text="Введите сумму тарифа на електричество"
+                                FontSize="16" />
+                            <Entry
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                Keyboard="Numeric"
+                                Text="{Binding ElectricityCoef}" />
+                        </Grid>
+                        <BoxView
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="LightGray" />
+                    </StackLayout>
+                </StackLayout>
+
                 <!--gas-->
                 <StackLayout
                     Spacing="0">
                     <Grid
-                ColumnDefinitions="Auto,Auto">
+                        ColumnDefinitions="Auto,Auto">
                         <CheckBox
-                    HorizontalOptions="StartAndExpand"                  
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    IsChecked="{Binding IsGasCounterEnable}"/>
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="0"
+                            IsChecked="{Binding IsGasCounterEnable}" />
                         <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Text="Газовый счетчик"/>
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="1"
+                            Text="Газовый счетчик" />
                     </Grid>
                     <StackLayout
-                IsVisible="{Binding IsGasCounterEnable}">
+                        IsVisible="{Binding IsGasCounterEnable}">
                         <Grid
-                ColumnDefinitions="*,*">
+                            ColumnDefinitions="*,*">
                             <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    Text="Введите сумму газового тарифа"
-                    FontSize="16"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="0"
+                                Text="Введите сумму газового тарифа"
+                                FontSize="16" />
                             <Entry
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Keyboard="Numeric"
-                    Text="{Binding GasCoef}"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                Keyboard="Numeric"
+                                Text="{Binding GasCoef}" />
                         </Grid>
                         <BoxView
-                        HeightRequest="2"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="LightGray"/>
-                    </StackLayout>                    
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="LightGray" />
+                    </StackLayout>
                 </StackLayout>
 
                 <!--water-->
                 <StackLayout
                     Spacing="0">
                     <Grid
-                ColumnDefinitions="Auto,Auto">
+                        ColumnDefinitions="Auto,Auto">
                         <CheckBox
-                    HorizontalOptions="StartAndExpand"                  
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    IsChecked="{Binding IsWaterCounterEnable}"/>
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="0"
+                            IsChecked="{Binding IsWaterCounterEnable}" />
                         <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Text="Водный счетчик"/>
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="1"
+                            Text="Водный счетчик" />
                     </Grid>
                     <StackLayout
-                IsVisible="{Binding IsWaterCounterEnable}">
+                        IsVisible="{Binding IsWaterCounterEnable}">
                         <Grid
-                ColumnDefinitions="*,*">
+                            ColumnDefinitions="*,*">
                             <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    Text="Введите сумму тарифа на воду"
-                    FontSize="16"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="0"
+                                Text="Введите сумму тарифа на воду"
+                                FontSize="16" />
                             <Entry
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Keyboard="Numeric"
-                    Text="{Binding WaterCoef}"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                Keyboard="Numeric"
+                                Text="{Binding WaterCoef}" />
                         </Grid>
                         <BoxView
-                        HeightRequest="2"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="LightGray"/>
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="LightGray" />
                     </StackLayout>
                 </StackLayout>
 
@@ -90,36 +119,36 @@
                 <StackLayout
                     Spacing="0">
                     <Grid
-                ColumnDefinitions="Auto,Auto">
+                        ColumnDefinitions="Auto,Auto">
                         <CheckBox
-                    HorizontalOptions="StartAndExpand"                  
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    IsChecked="{Binding IsHotWaterCounterEnable}"/>
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="0"
+                            IsChecked="{Binding IsHotWaterCounterEnable}" />
                         <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Text="Счетчик гарячей воды"/>
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="1"
+                            Text="Счетчик гарячей воды" />
                     </Grid>
                     <StackLayout
-                IsVisible="{Binding IsHotWaterCounterEnable}">
+                        IsVisible="{Binding IsHotWaterCounterEnable}">
                         <Grid
-                ColumnDefinitions="*,*">
+                            ColumnDefinitions="*,*">
                             <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    Text="Введите сумму тарифа на гарячую воду"
-                    FontSize="16"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="0"
+                                Text="Введите сумму тарифа на гарячую воду"
+                                FontSize="16" />
                             <Entry
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Keyboard="Numeric"
-                    Text="{Binding HotWaterCoef}"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                Keyboard="Numeric"
+                                Text="{Binding HotWaterCoef}" />
                         </Grid>
                         <BoxView
-                        HeightRequest="2"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="LightGray"/>
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="LightGray" />
                     </StackLayout>
                 </StackLayout>
 
@@ -127,83 +156,83 @@
                 <StackLayout
                     Spacing="0">
                     <Grid
-                ColumnDefinitions="Auto,Auto">
+                        ColumnDefinitions="Auto,Auto">
                         <CheckBox
-                    HorizontalOptions="StartAndExpand"                  
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    IsChecked="{Binding IsHeatingEnable}"/>
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="0"
+                            IsChecked="{Binding IsHeatingEnable}" />
                         <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Text="Отопление"/>
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="1"
+                            Text="Отопление" />
                     </Grid>
                     <StackLayout
                         IsVisible="{Binding IsHeatingEnable}">
                         <Grid
-                ColumnDefinitions="*,*">
+                            ColumnDefinitions="*,*">
                             <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    Text="Введите сумму стоимости отопления"
-                    FontSize="16"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="0"
+                                Text="Введите сумму стоимости отопления"
+                                FontSize="16" />
                             <Entry
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Keyboard="Numeric"
-                    Text="{Binding HeatingCost}"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                Keyboard="Numeric"
+                                Text="{Binding HeatingCost}" />
                         </Grid>
                         <BoxView
-                        HeightRequest="2"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="LightGray"/>
-                    </StackLayout>                    
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="LightGray" />
+                    </StackLayout>
                 </StackLayout>
 
                 <!--public service-->
                 <StackLayout
                     Spacing="0">
                     <Grid
-                ColumnDefinitions="Auto,Auto">
+                        ColumnDefinitions="Auto,Auto">
                         <CheckBox
-                    HorizontalOptions="StartAndExpand"                  
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    IsChecked="{Binding IsPublicServiceEnable}"/>
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="0"
+                            IsChecked="{Binding IsPublicServiceEnable}" />
                         <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Text="Коммунальные услуги"/>
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="1"
+                            Text="Коммунальные услуги" />
                     </Grid>
                     <StackLayout
                         IsVisible="{Binding IsPublicServiceEnable}">
                         <Grid
-                ColumnDefinitions="*,*">
+                            ColumnDefinitions="*,*">
                             <Label
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="0"
-                    Text="Введите сумму стоимости коммунальных услуг"
-                    FontSize="16"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="0"
+                                Text="Введите сумму стоимости коммунальных услуг"
+                                FontSize="16" />
                             <Entry
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Column="1"
-                    Keyboard="Numeric"
-                    Text="{Binding PublicServiceCost}"/>
+                                VerticalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                Keyboard="Numeric"
+                                Text="{Binding PublicServiceCost}" />
                         </Grid>
                         <BoxView
-                        HeightRequest="2"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="LightGray"/>
-                    </StackLayout>                    
-                </StackLayout>               
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="LightGray" />
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
-        
+
         <Button
             Margin="20,0,20,20"
             VerticalOptions="EndAndExpand"
             Text="Save changes"
             TextTransform="None"
-            Command="{Binding SaveCommand}"/>
+            Command="{Binding SaveCommand}" />
     </StackLayout>
 </ContentPage>

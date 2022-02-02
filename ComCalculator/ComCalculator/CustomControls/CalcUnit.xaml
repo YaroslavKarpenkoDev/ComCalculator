@@ -15,15 +15,17 @@
                 x:Name="CurrentValueEntry"
                 VerticalOptions="CenterAndExpand"
                 FontSize="16"
+                Keyboard="Numeric"
                 Placeholder="Текущий"/>
             <Label
                 VerticalOptions="CenterAndExpand"
                 FontSize="16"
                 Text="-"/>
             <Entry
-                x:Name="PreviousValueEntry"
+                x:Name="OldValueEntry"
                 FontSize="16"
                 VerticalOptions="CenterAndExpand"
+                Keyboard="Numeric"
                 Placeholder="Предыдущий"/>
             <Label
                 Text="*"

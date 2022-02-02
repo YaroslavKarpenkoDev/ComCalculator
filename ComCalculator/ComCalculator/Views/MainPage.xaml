@@ -1,10 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ComCalculator.Views.MainPage"
-             BackgroundColor="Red"
-             NavigationPage.HasNavigationBar="False">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:ComCalculator.ViewModels"
+    x:DataType="viewmodels:MainPageViewModel"
+    x:Class="ComCalculator.Views.MainPage"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout
+        Spacing="30"
+        Padding="30">
+        <Button
+            VerticalOptions="Center"
+            Text="Settings"
+            Command="{Binding NavigateToSettingsCommand}" />
+        <Button
+            VerticalOptions="Center"
+            Text="Calc" 
+            Command="{Binding NavigateToCalcCommand}"/>
+        <Button
+            VerticalOptions="Center"
+            Text="Statistic" 
+            Command="{Binding NavigateToStatisticCommand}"/>
+    </StackLayout>
 
-    
+
 
 </ContentPage>

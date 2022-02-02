@@ -10,8 +10,8 @@ namespace ComCalculator.Utils
 	{
         //gas
         private const string GasCoefKey = "gasCoef";
-        public static readonly int GasCoefDefault = 0;
-        public static int GasCoefitient
+        public static readonly string GasCoefDefault = "0";
+        public static string GasCoefitient
         {
             get => Preferences.Get(GasCoefKey, GasCoefDefault);
             set => Preferences.Set(GasCoefKey, value);
@@ -27,8 +27,8 @@ namespace ComCalculator.Utils
 
         //water
         private const string WaterCoefKey = "waterCoef";
-        public static readonly int WaterCoefDefault = 0;
-        public static int WaterCoefitient
+        public static readonly string WaterCoefDefault = "0";
+        public static string WaterCoefitient
         {
             get => Preferences.Get(WaterCoefKey, WaterCoefDefault);
             set => Preferences.Set(WaterCoefKey, value);
@@ -44,8 +44,8 @@ namespace ComCalculator.Utils
 
         //electricity
         private const string ElectricityCoefKey = "electricityCoef";
-        public static readonly int ElectricityCoefDefault = 0;
-        public static int ElectricityCoefitient
+        public static readonly string ElectricityCoefDefault = "0";
+        public static string ElectricityCoefitient
         {
             get => Preferences.Get(ElectricityCoefKey, ElectricityCoefDefault);
             set => Preferences.Set(ElectricityCoefKey, value);
@@ -61,8 +61,8 @@ namespace ComCalculator.Utils
 
         //hot water
         private const string HotWaterCoefKey = "hotWaterCoef";
-        public static readonly int HotWaterCoefDefault = 0;
-        public static int HotWaterCoefitient
+        public static readonly string HotWaterCoefDefault = "0";
+        public static string HotWaterCoefitient
         {
             get => Preferences.Get(HotWaterCoefKey, HotWaterCoefDefault);
             set => Preferences.Set(HotWaterCoefKey, value);
@@ -79,8 +79,8 @@ namespace ComCalculator.Utils
 
         //heating
         private const string HeatingCoefKey = "heatingCoef";
-        public static readonly int HeatingCoefDefault = 0;
-        public static int HeatingCoefitient
+        public static readonly string HeatingCoefDefault = "0";
+        public static string HeatingCoefitient
         {
             get => Preferences.Get(HeatingCoefKey, HeatingCoefDefault);
             set => Preferences.Set(HeatingCoefKey, value);
@@ -96,8 +96,8 @@ namespace ComCalculator.Utils
 
         //pbulic service
         private const string PublicServiceCoefKey = "publicServiceCoef";
-        public static readonly int PublicServiceCoefDefault = 0;
-        public static int PublicServiceCoefitient
+        public static readonly string PublicServiceCoefDefault = "0";
+        public static string PublicServiceCoefitient
         {
             get => Preferences.Get(PublicServiceCoefKey, PublicServiceCoefDefault);
             set => Preferences.Set(PublicServiceCoefKey, value);

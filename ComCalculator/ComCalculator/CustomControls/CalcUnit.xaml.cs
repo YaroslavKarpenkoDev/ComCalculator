@@ -21,7 +21,7 @@ namespace ComCalculator.CustomControls
 			propertyName: nameof(Title),
 			returnType: typeof(string),
 			declaringType: typeof(CalcUnit),
-			defaultValue: "Title",
+			defaultValue: string.Empty,
 			defaultBindingMode: BindingMode.TwoWay,
 			propertyChanged: TitlePropertyChanged);
 
@@ -29,23 +29,24 @@ namespace ComCalculator.CustomControls
 			propertyName: nameof(CurrentValue),
 			returnType: typeof(string),
 			declaringType: typeof(CalcUnit),
-			defaultValue: "Current",
+			defaultValue: string.Empty,
 			defaultBindingMode: BindingMode.TwoWay,
 			propertyChanged: CurrentValuePropertyChanged);
 
-		public static BindableProperty PerviousValueProperty = BindableProperty.Create(
-			propertyName: nameof(PreviousValue),
+		public static BindableProperty OldValueProperty = BindableProperty.Create(
+			propertyName: nameof(OldValue),
 			returnType: typeof(string),
 			declaringType: typeof(CalcUnit),
-			defaultValue: "Current",
+			defaultValue: string.Empty,
 			defaultBindingMode: BindingMode.TwoWay,
-			propertyChanged: PerviousValuePropertyChanged);
+			propertyChanged: OldValuePropertyChanged);
+
 
 		public static BindableProperty CoefValueProperty = BindableProperty.Create(
 			propertyName: nameof(CoefValue),
 			returnType: typeof(string),
 			declaringType: typeof(CalcUnit),
-			defaultValue: "Current",
+			defaultValue: string.Empty,
 			defaultBindingMode: BindingMode.TwoWay,
 			propertyChanged: CoefValuePropertyChanged);
 
@@ -53,7 +54,7 @@ namespace ComCalculator.CustomControls
 			propertyName: nameof(ResultValue),
 			returnType: typeof(string),
 			declaringType: typeof(CalcUnit),
-			defaultValue: "Current",
+			defaultValue: string.Empty,
 			defaultBindingMode: BindingMode.TwoWay,
 			propertyChanged: ResultValuePropertyChanged);
 		#endregion
@@ -70,11 +71,10 @@ namespace ComCalculator.CustomControls
 			get => (string)GetValue(CurrentValueProperty);
 			set => SetValue(CurrentValueProperty, value);
 		}
-
-		public string PreviousValue
+		public string OldValue
 		{
-			get => (string)GetValue(PerviousValueProperty);
-			set => SetValue(PerviousValueProperty, value);
+			get => (string)GetValue(OldValueProperty);
+			set => SetValue(OldValueProperty, value);
 		}
 
 		public string CoefValue
@@ -96,7 +96,7 @@ namespace ComCalculator.CustomControls
 			{
 				if (newValue != null)
 				{
-					e.TitleLabel.Text = (string)newValue;				
+					e.TitleLabel.Text = (string)newValue;
 				}
 			}
 		}
@@ -107,27 +107,30 @@ namespace ComCalculator.CustomControls
 			{
 				if (newValue != null)
 				{
+					e.CurrentValue = (string)newValue;
 					e.CurrentValueEntry.Text = (string)newValue;
 				}
 			}
 		}
-
-		private static void PerviousValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+		private static void OldValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			if (bindable is CalcUnit e)
 			{
 				if (newValue != null)
 				{
-					e.PreviousValueEntry.Text = (string)newValue;
+					e.OldValue = (string)newValue;
+					e.OldValueEntry.Text = (string)newValue;
 				}
 			}
 		}
+
 		private static void CoefValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			if (bindable is CalcUnit e)
 			{
 				if (newValue != null)
 				{
+					e.CoefValue = (string)newValue;
 					e.CoefLabel.Text = (string)newValue;
 				}
 			}
@@ -138,6 +141,7 @@ namespace ComCalculator.CustomControls
 			{
 				if (newValue != null)
 				{
+					e.ResultValue = (string)newValue;
 					e.ResultLabel.Text = (string)newValue;
 				}
 			}

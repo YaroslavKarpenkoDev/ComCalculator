@@ -21,7 +21,7 @@ namespace ComCalculator
 			Sharpnado.Tabs.Initializer.Initialize(false, false);
 			Sharpnado.Shades.Initializer.Initialize(loggerEnable: false);
 			Sharpnado.MaterialFrame.Initializer.Initialize(loggerEnable: false, debugLogEnable: false);
-			await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MainTabbedPage)}");
+			await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(Views.MainPage)}");
 		}
 
 		protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,6 +29,7 @@ namespace ComCalculator
 			containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
 			containerRegistry.RegisterForNavigation<NavigationPage>();
+			containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 			containerRegistry.RegisterForNavigation<MainTabbedPage, MainTabbedPageViewModel>();
 			containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
 			containerRegistry.RegisterForNavigation<StatisticPage, StatisticPageViewModel>();

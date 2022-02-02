@@ -4,6 +4,8 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace ComCalculator.ViewModels
 {
@@ -190,32 +192,6 @@ namespace ComCalculator.ViewModels
 				eletricityCounterNewValue = value;
 			}
 		}
-
-		private string publicServiceCounterOldValue;
-		public string PublicServiceCounterOldValue
-		{
-			get
-			{
-				return publicServiceCounterOldValue;
-			}
-			set
-			{
-				publicServiceCounterOldValue = value;
-			}
-		}
-
-		private string publicServiceCounterNewValue;
-		public string PublicServiceCounterNewValue
-		{
-			get
-			{
-				return publicServiceCounterNewValue;
-			}
-			set
-			{
-				publicServiceCounterNewValue = value;
-			}
-		}
 		#endregion CountersValues
 
 		#region Coefitients&Prises
@@ -351,26 +327,31 @@ namespace ComCalculator.ViewModels
 		}
 		#endregion
 
+		public string TotalValue { get; set; }
 
 		#endregion
+
+		#region Commands
+		public ICommand CalculateCommand => new Command(StartEtimation);
+		#endregion
+
 		#region Lifecycle
 		public override void OnNavigatedTo(INavigationParameters parameters)
 		{
 			base.OnNavigatedTo(parameters);
-		}
-
-		public override void Initialization()
-		{
-			base.Initialization();
 			LoadSettings();
 		}
+
 		#endregion
+
 		#region Methods
 		public void StartEtimation()
 		{
-			GasResult = CalculationService.ToCalculate(CalculationService.ConvertToDouble(GasCounterNewValue),CalculationService.ConvertToDouble(GasCounterOldValue),CalculationService.ConvertToDouble(GasCoef)).ToString();
-			WaterResult = CalculationService.ToCalculate(CalculationService.ConvertToDouble(WaterCounterNewValue), CalculationService.ConvertToDouble(WaterCounterOldValue), CalculationService.ConvertToDouble(WaterCoef)).ToString();
-			HotWaterResult = CalculationService.ToCalculate(CalculationService.ConvertToDouble(HotWaterCounterNewValue), CalculationService.ConvertToDouble(HotWaterCounterOldValue), CalculationService.ConvertToDouble(HotWaterCoef)).ToString();
+			ElectricityResult = CalculationService.ToCalculate(EletricityCounterNewValue, EletricityCounterOldValue, ElectricityCoef).ToString();
+			GasResult = CalculationService.ToCalculate(GasCounterNewValue,GasCounterOldValue,GasCoef).ToString();
+			WaterResult = CalculationService.ToCalculate(WaterCounterNewValue, WaterCounterOldValue, WaterCoef).ToString();
+			HotWaterResult = CalculationService.ToCalculate(HotWaterCounterNewValue, HotWaterCounterOldValue, HotWaterCoef).ToString();
+			TotalValue = CalculationService.ToCalculate(GasResult, WaterResult, HotWaterResult, ElectricityResult, HeatingCost, PublicServiceCost).ToString();
 			AppSettings.GasPastValue = GasCounterNewValue;
 			 AppSettings.HotWaterPastValue = HotWaterCounterNewValue;
 			AppSettings.WaterPastValue = WaterCounterNewValue;
@@ -388,6 +369,12 @@ namespace ComCalculator.ViewModels
 			HotWaterCounterOldValue = AppSettings.HotWaterPastValue;
 			WaterCounterOldValue = AppSettings.WaterPastValue;
 			EletricityCounterOldValue = AppSettings.ElectricityPastValue;
+			GasCoef = AppSettings.GasCoefitient.ToString();
+			WaterCoef = AppSettings.WaterCoefitient.ToString();
+			HotWaterCoef = AppSettings.HotWaterCoefitient.ToString();
+			HeatingCost = AppSettings.HeatingCoefitient.ToString();
+			PublicServiceCost = AppSettings.PublicServiceCoefitient.ToString();
+			ElectricityCoef = AppSettings.ElectricityCoefitient.ToString();
 		}
 		#endregion
 	}

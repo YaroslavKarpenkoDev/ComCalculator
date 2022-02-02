@@ -16,6 +16,7 @@ namespace ComCalculator.ViewModels
 		private SettingsPageViewModel settingsPage;
 		private StatisticPageViewModel statisticPage;
 		private CalcPageViewModel calcPage;
+		private MainPageViewModel main;
 		public int SelectedIndex
 		{
 			get => selectedIndex;
@@ -26,6 +27,17 @@ namespace ComCalculator.ViewModels
 					CalculatePage.Initialization();
 				}
 				selectedIndex = value;
+			}
+		}
+		public MainPageViewModel Main
+		{
+			get
+			{
+				if (main == null)
+				{
+					main = new MainPageViewModel(NavigationService);
+				}
+				return main;
 			}
 		}
 		public CalcPageViewModel CalculatePage

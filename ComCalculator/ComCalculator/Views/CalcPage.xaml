@@ -5,24 +5,73 @@
     xmlns:customcontrols="clr-namespace:ComCalculator.CustomControls"
     xmlns:viewmodels="clr-namespace:ComCalculator.ViewModels"
     x:DataType="viewmodels:CalcPageViewModel"
-    x:Class="ComCalculator.Views.CalcPage">
+    x:Class="ComCalculator.Views.CalcPage"
+    Title="Calculate">
     <StackLayout>
         <ScrollView
             Padding="20">
             <StackLayout>
+                <StackLayout>
+                    <Label
+                        x:Name="TitleLabel"
+                        Text="Electricity"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="16" />
+                    <StackLayout
+                        Spacing="16"
+                        Orientation="Horizontal">
+                        <Entry
+                            x:Name="CurrentValueEntry"
+                            Text="{Binding EletricityCounterNewValue, Mode=TwoWay}"
+                            VerticalOptions="CenterAndExpand"
+                            FontSize="16"
+                            Keyboard="Numeric"
+                            Placeholder="Текущий" />
+                        <Label
+                            VerticalOptions="CenterAndExpand"
+                            FontSize="16"
+                            Text="-" />
+                        <Entry
+                            x:Name="OldValueEntry"
+                            FontSize="16"
+                            VerticalOptions="CenterAndExpand"
+                            Keyboard="Numeric"
+                            Placeholder="Предыдущий"
+                            Text="{Binding EletricityCounterOldValue, Mode=TwoWay}"/>
+                        <Label
+                            Text="*"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            x:Name="CoefLabel"
+                            FontSize="16"
+                            Text="{Binding ElectricityCoef, Mode=TwoWay}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            VerticalOptions="CenterAndExpand"
+                            FontSize="16"
+                            Text="=" />
+                        <Label
+                            x:Name="ResultLabel"
+                            FontSize="16"
+                            VerticalOptions="CenterAndExpand"
+                            Grid.Column="6"
+                            Text="{Binding ElectricityResult, Mode=TwoWay}" />
+                    </StackLayout>
+                </StackLayout>
                 <customcontrols:CalcUnit
                     IsVisible="true"
                     CornerRadius="3"
                     Title="Electricity"
-                    CurrentValue="111"
-                    PreviousValue="110"
-                    CoefValue="111"
-                    ResultValue="1" />
+                    CurrentValue="{Binding EletricityCounterNewValue, Mode=TwoWay}"
+                    OldValue="{Binding EletricityCounterOldValue, Mode=TwoWay}"
+                    CoefValue="{Binding ElectricityCoef, Mode=TwoWay}"
+                    ResultValue="{Binding ElectricityResult, Mode=TwoWay}" />
                 <customcontrols:CalcUnit
                     IsVisible="{Binding IsGasUnitEnable}"
                     CornerRadius="3"
                     Title="Gas"
                     CurrentValue="{Binding GasCounterNewValue}"
+                    OldValue="{Binding GasCounterOldValue}"
                     CoefValue="{Binding GasCoef}"
                     ResultValue="{Binding GasResult}" />
                 <customcontrols:CalcUnit
@@ -30,6 +79,7 @@
                     CornerRadius="3"
                     Title="Water"
                     CurrentValue="{Binding WaterCounterNewValue}"
+                    OldValue="{Binding HotWaterCounterOldValue}"
                     CoefValue="{Binding WaterCoef}"
                     ResultValue="{Binding WaterResult}" />
                 <customcontrols:CalcUnit
@@ -37,24 +87,59 @@
                     CornerRadius="3"
                     Title="HotWater"
                     CurrentValue="{Binding HotWaterCounterNewValue}"
+                    OldValue="{Binding HotWaterCounterOldValue}"
                     CoefValue="{Binding HotWaterCoef}"
                     ResultValue="{Binding HotWaterResult}" />
-                <customcontrols:CalcUnit
+                
+                <Frame
                     IsVisible="{Binding IsHeatingUnitEnable}"
+                    HasShadow="True"
                     CornerRadius="3"
-                    Title="Heating"
-                    CoefValue="{Binding HeatingCost}"
-                    ResultValue="{Binding HeatingCost}" />
-                <customcontrols:CalcUnit
+                    IsClippedToBounds="True">
+                    <StackLayout>
+                        <Label
+                            Text="Heating"
+                            FontSize="16"
+                            HorizontalOptions="Center" />
+                        <Entry
+                            Text="{Binding HeatingCost}"
+                            FontSize="16" />
+                    </StackLayout>
+                </Frame>
+                
+                <Frame
                     IsVisible="{Binding IsPublicServiceUnitEnable}"
+                    HasShadow="True"
                     CornerRadius="3"
-                    Title="Public Service"
-                    ResultValue="{Binding PublicServiceCost}" />
+                    IsClippedToBounds="True">
+                    <StackLayout>
+                        <Label
+                            Text="Public Service"
+                            FontSize="16"
+                            HorizontalOptions="Center" />
+                        <Entry
+                            Text="{Binding PublicServiceCost}"
+                            FontSize="16"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    HasShadow="True"
+                    CornerRadius="3"
+                    IsClippedToBounds="True">
+                    <StackLayout>
+                        <Label
+                            Text="Total value" />
+                        <Label
+                            Text="{Binding TotalValue}"/>
+
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
         <Button
             Text="Calculate"
-            Margin="20,0,20,20" />
+            Margin="20,0,20,20"
+            Command="{Binding CalculateCommand}"/>
     </StackLayout>
 
 </ContentPage>

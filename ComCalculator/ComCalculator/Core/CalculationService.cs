@@ -6,12 +6,13 @@ namespace ComCalculator.Core
 {
 	public class CalculationService : ICalculationService
 	{
-		public  int ToCalculate(params int[] values)
+		public double ToCalculate(params string[] values)
 		{
-			int result = 0;
+
+			double result = 0d;
 			foreach (var item in values)
 			{
-				result += item;
+				result += ConvertToDouble(item);
 			}
 			return result;
 		}

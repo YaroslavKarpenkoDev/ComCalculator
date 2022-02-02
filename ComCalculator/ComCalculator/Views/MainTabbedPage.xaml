@@ -29,6 +29,9 @@
             Animate="True"
             SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
             <tabs:LazyView
+                x:TypeArguments="views:MainPage"
+                BindingContext="{Binding Main}" />
+            <!--<tabs:LazyView
                 x:TypeArguments="views:SettingsPage"                    
                 BindingContext="{Binding PageOfSettings}"/>
             <tabs:LazyView
@@ -36,7 +39,7 @@
                 BindingContext="{Binding CalculatePage}"/>
             <tabs:LazyView
                 x:TypeArguments="views:StatisticPage"
-                BindingContext="{Binding PageOfStatistic}"/>
+                BindingContext="{Binding PageOfStatistic}"/>-->
         </tabs:ViewSwitcher>
 
         <tabs:TabHostView
@@ -58,6 +61,13 @@
                     UnselectedLabelColor="Blue"
                     SelectedTabColor="Blue"
                     IconImageSource="settings"
+                    Label="Main" />
+                <!--<tabs:BottomTabItem
+                    IconSize="30"
+                    HeightRequest="60"
+                    UnselectedLabelColor="Blue"
+                    SelectedTabColor="Blue"
+                    IconImageSource="settings"
                     Label="Settings" />
                 <tabs:BottomTabItem
                     IconSize="30"
@@ -72,7 +82,7 @@
                     UnselectedLabelColor="Blue"
                     SelectedTabColor="Blue"
                     IconImageSource="settings"
-                    Label="Statistic" />
+                    Label="Statistic" />-->
             </tabs:TabHostView.Tabs>
         </tabs:TabHostView>
 
